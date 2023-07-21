@@ -15,6 +15,23 @@ app.get("/", (req, res) => {
   });
 });
 
+//ENDPOINTS DE PRODUCTO
+app.get("/api/products", (req, res) => {
+  res.json({ success: true, response: "productos" });
+});
+
+app.post("/api/products", (req, res) => {
+  res.json({ success: true, response: "productos" });
+});
+
+app.put("/api/products", (req, res) => {
+  res.json({ success: true, response: "productos" });
+});
+
+app.delete("/api/products", (req, res) => {
+  res.json({ success: true, response: "productos" });
+});
+
 //Inicializar server
 app.listen(PORT, () => {
   console.log(`Server initialized in port: ${PORT}`);
