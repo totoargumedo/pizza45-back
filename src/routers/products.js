@@ -1,13 +1,11 @@
 const { Router } = require("express");
-const { addProduct } = require("../controllers/products");
+const { addProduct, getProducts } = require("../controllers/products");
 
 //Routers
 const router_products = Router();
 
 //ENDPOINTS DE PRODUCTO
-router_products.get("/", (req, res) => {
-  res.json({ success: true, response: "productos" });
-});
+router_products.get("/", getProducts);
 
 router_products.post("/", addProduct);
 

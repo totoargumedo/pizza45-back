@@ -4,6 +4,8 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 //Importar componentes
 const { router } = require("./routers/index");
+const { notFoundHandler } = require("./middlewares/notFound");
+const { errorHandler } = require("./middlewares/error");
 
 //Crear app
 const app = express();
@@ -13,7 +15,14 @@ const PORT = process.env.PORT || 8080;
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//routers
 app.use("/api", router);
+
+//app.use("/public", express.static("public"));
+app.use(express.static("public"));
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 //ENDPOINTS
 app.get("/", (req, res) => {
